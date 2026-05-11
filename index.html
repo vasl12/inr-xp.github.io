@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="Website of paper what cohort INRs encode and where to freeze them">
+  <meta name="keywords" content="INRs, cohort-trained INRs, freeze depth, SAE, sparse autoencoders">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What Cohort INRs Encode and Where to Freeze Them</title>
 
@@ -153,7 +153,7 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://arxiv.org/abs/2011.12948"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -161,17 +161,17 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Code Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+              <span class="link-block">
+                <a href="https://github.com/vasl12/xp_inrs"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
                   </a>
-              </span> -->
+              </span>
 
           </div>
         </div>
@@ -197,8 +197,8 @@
     <div class="container is-max-widescreen">
       <img class="teaser-figure" src="./static/images/teaser-1.png" alt="Teaser figure">
       <p class="content is-size-6 has-text-centered figure-caption" style="margin-top: 0.75rem;">
-        Left: the optimal freeze depth in cohort-trained INRs coincides with the layer of peak weight stable rank in the encoder.
-        Right: SAEs recover qualitatively different dictionaries.
+        <strong>Left:</strong> the optimal freeze depth in cohort-trained INRs coincides with the layer of peak weight stable rank in the encoder.
+        <strong>Right:</strong> SAEs recover qualitatively different dictionaries.
         SIREN atoms tile the coordinate plane.
         FFMLP atoms trace memorized cohort content.
       </p>
@@ -237,7 +237,7 @@
     <!-- Gallery (CelebA). -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-4" style="margin-top: 1.5rem;">Cohort SIREN transfers best at layer 1, FFMLP at layer 0.</h2>
+        <h2 class="title is-4" style="margin-top: 1.5rem;">Transferable features live at the rank-rich layers. <br> Cohort SIREN transfers best at layer 1, FFMLP at layer 0.</h2>
         <p class="subtitle is-6 has-text-centered" style="margin-top: 0.75rem;">
           The optimal test-time freeze depth in cohort-trained INRs coincides with the layer of peak weight stable rank in the encoder, a predictor inferable from the encoder alone that matches or improves on the standard fine-tuning recipe.
         </p>
@@ -246,10 +246,10 @@
                alt="Layer-wise transfer sweep for cohort-trained SIREN and FFMLP.">
         </figure>
         <p class="content is-size-6 has-text-centered figure-caption" style="margin-top: 1rem;">
-          <b>Layer-wise transfer sweep for cohort-trained SIREN and FFMLP.</b>
+          <strong>Layer-wise transfer sweep for cohort-trained SIREN and FFMLP.</strong>
           The layer of peak weight stable rank picks the optimal freeze depth in all six
           (source, architecture) cells.
-          Top row: SIREN. Bottom row: FFMLP.
+          <strong>Top row:</strong> SIREN. <strong>Bottom row:</strong> FFMLP.
           Stars mark the empirical optimum.
         </p>
 
@@ -263,9 +263,12 @@
         </figure>
         <p class="content is-size-6 has-text-centered figure-caption" style="margin-top: 1rem;">
           <!-- <b>What the networks encode: localized atoms in SIREN, image-shaped atoms in FFMLP.</b> -->
+          <strong>SAE decomposition of single signal vs. cohort-trained INRs per architecture.</strong> 
           SAE atom dictionaries split by architecture, not training regime.
           SIREN learns content-independent localized atoms that tile the coordinate plane.
           FFMLP learns image-shaped atoms tracing memorized cohort content.
+          With purple we indicate the average top-k atoms in each dictionary.
+          The GT image on the left column is presented for reference.
         </p>
 
         <figure class="image" style="margin-top: 2rem;">
@@ -274,9 +277,10 @@
         </figure>
         <p class="content is-size-6 has-text-centered figure-caption" style="margin-top: 1rem;">
           <!-- <b>Atom-level concentration and dictionary capacity across depth.</b> -->
+          <strong>Active fraction:</strong> fraction of pixels at which the atom fires above threshold; lower values indicate spatially localized atoms.
           Two dictionaries, two regimes.
-          Cohort SIREN: every atom stays alive, each firing on \(\sim 1\%\) of pixels.
-          Cohort FFMLP: over half its atoms die at depth, survivors firing on \(30\)-\(50\%\) of pixels each.
+          <strong>Cohort SIREN:</strong> every atom stays alive, each firing on \(\sim 1\%\) of pixels.
+          <strong>Cohort FFMLP:</strong> over half its atoms die at depth, survivors firing on \(30\)-\(50\%\) of pixels each.
         </p>
 
         <h3 class="title is-4" style="margin-top: 2rem;">
@@ -287,7 +291,7 @@
                alt="SIREN damage stays local, FFMLP damage spreads globally.">
         </figure>
         <p class="content is-size-6 has-text-centered figure-caption" style="margin-top: 1rem;">
-          <b>Single atom ablations per architecture.</b>
+          <strong>Single atom ablations per architecture.</strong>
           A single FFMLP atom out of 4096 drops PSNR by up to 10.58 dB across the entire image.
           SIREN ablations affect only where the atom fires.
         </p>
