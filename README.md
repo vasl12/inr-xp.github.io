@@ -4,11 +4,14 @@ This is the repository that contains source code for the website of the paper [W
 
 If you find "What Cohort INRs Encode and Where to Freeze Them" website useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@misc{siderilampretsa2026cohortinrs,
+  title={What Cohort INRs Encode and Where to Freeze Them},
+  author={Vasiliki Sideri-Lampretsa and Sophie Starck and Robbie Holland and Julian McGinnis and Daniel Rueckert},
+  year={2026},
+  eprint={2605.08298},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2605.08298}
 }
 ```
 
