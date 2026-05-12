@@ -1,6 +1,6 @@
 # What Cohort INRs Encode and Where to Freeze Them
 
-This is the repository that contains source code for the website of the paper [What Cohort INRs Encode and Where to Freeze Them website]([https://inr-xp.github.io/]).
+This is the repository that contains source code for the website of the paper [What Cohort INRs Encode and Where to Freeze Them website](https://inr-xp.github.io/).
 
 If you find "What Cohort INRs Encode and Where to Freeze Them" website useful for your work, please cite:
 ```
